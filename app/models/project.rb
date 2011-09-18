@@ -15,6 +15,8 @@ class Project < ActiveRecord::Base
   validates_inclusion_of :point_scale, :in => POINT_SCALES.keys,
     :message => "%{value} is not a valid estimation scheme"
 
+  validates :name, :presence => true
+
   ITERATION_LENGTH_RANGE = (1..4)
   validates_numericality_of :iteration_length,
     :greater_than_or_equal_to => ITERATION_LENGTH_RANGE.min,

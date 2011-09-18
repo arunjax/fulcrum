@@ -13,6 +13,11 @@ class ProjectTest < ActiveSupport::TestCase
     assert_equal 'fibonacci', Project.new.point_scale
   end
 
+  test "should reject blank name" do
+    @project.name = ''
+    assert !@project.save
+  end
+
   test "should reject invalid point scale" do
     @project.point_scale = 'invalid_point_scale'
     assert !@project.save
